@@ -2,11 +2,15 @@ using UnityEngine;
 
 public class playerCollisionWithObstacle : MonoBehaviour
 {
+
+    public playerMovement movement;
+
     void OnCollisionEnter(Collision collisionInfo)
     {
         if (collisionInfo.collider.tag == "Obstacle")
         {
-            Debug.Log("Choco contra algo");
+            movement.enabled = false;
+            FindObjectOfType<GameManager>().EndGame();
         }
     }
 }
